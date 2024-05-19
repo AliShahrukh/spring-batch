@@ -1,10 +1,10 @@
-package com.batch.learn;
+package com.springbatch.chunkprocessing;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LearnApplicationTests {
+class ChunkProcessingApplicationTests {
 
 	@Test
 	void contextLoads() {
