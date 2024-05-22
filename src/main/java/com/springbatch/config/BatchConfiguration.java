@@ -48,6 +48,8 @@ public class BatchConfiguration {
 	
 	@Autowired
 	public DataSource dataSource;
+	@Autowired
+	private ProductNameItemReader productNameItemReader;
 	
 /*
 	@Bean
@@ -65,7 +67,7 @@ public class BatchConfiguration {
 	}
 */
 
-	@Bean
+	/*@Bean
 	public ItemReader<Product> flatFileItemReader() {
 
 		FlatFileItemReader<Product> itemReader = new FlatFileItemReader<>();
@@ -83,7 +85,7 @@ public class BatchConfiguration {
 		itemReader.setLineMapper(lineMapper);
 
 		return itemReader;
-	}
+	}*/
 	
 /*
 	@Bean
@@ -190,7 +192,7 @@ public class BatchConfiguration {
 	public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws Exception {
 		return new StepBuilder("chunkBasedStep1", jobRepository)
 				.<Product,OSProduct>chunk(3, transactionManager)
-				.reader(flatFileItemReader())
+				.reader(productNameItemReader)
 				.processor(itemProcessor())
 				.writer(jdbcBatchItemWriter())
 				.build();
